@@ -36,7 +36,7 @@
   "scripts": {
     "build": "webpack -d --progress --colors --watch",
     "dist": "webpack -p",
-    "postinstall": "npm run dist",
+    "postinstall": "npm install && npm run dist",
     "start": "node server.js"
   },
   "engines" : {
