@@ -37,7 +37,9 @@
     "build": "webpack -d --progress --colors --watch",
     "dist": "webpack -p",
     "postinstall": "npm run dist",
-    "dev": "nodemon app/server.js",
     "start": "node server.js"
+  },
+  "engines" : {
+    "node" : "0.12.x"
   }
 }
