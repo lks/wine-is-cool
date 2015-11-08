@@ -29,6 +29,7 @@
     "babel-preset-es2015": "^6.1.2"
   },
   "scripts": {
+    "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
     "start": "webpack -w"
   }
 }
