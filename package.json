@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/lks/wine-is-cool#readme",
   "dependencies": {
-    "react": "^0.14.2",
+    "react": "^0.14.*",
     "webpack": "^1.12.3",
     "body-parser": "^1.4.3",
     "express": "~4.9.x"
