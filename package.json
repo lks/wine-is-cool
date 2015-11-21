@@ -38,7 +38,8 @@
     "build": "webpack -d --progress --colors --watch",
     "dist": "webpack -p",
     "postinstall": "npm run dist",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "git push heroku master"
   },
   "engines" : {
     "node" : "0.12.x"
