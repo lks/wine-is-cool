@@ -25001,6 +25001,8 @@
 	var ReactDOM = __webpack_require__(/*! react-dom */ 158);
 	var WineActions = __webpack_require__(/*! ../actions/wine-actions */ 285);
 	
+	var Link = __webpack_require__(/*! react-router */ 159).Link;
+	
 	var WineNew = React.createClass({
 	  displayName: 'WineNew',
 	
@@ -25074,7 +25076,11 @@
 	      React.createElement(
 	        'button',
 	        { type: 'submit', className: 'btn btn-default', onClick: this.onSubmit },
-	        'Submit'
+	        React.createElement(
+	          Link,
+	          { to: '/list' },
+	          'Submit'
+	        )
 	      )
 	    );
 	  }
@@ -35486,6 +35492,8 @@
 	var WineStore = __webpack_require__(/*! ../stores/wine-store */ 291);
 	var WineActions = __webpack_require__(/*! ../actions/wine-actions */ 285);
 	
+	var WineItem = __webpack_require__(/*! ./wine-item */ 293);
+	
 	var WineList = React.createClass({
 	  displayName: 'WineList',
 	
@@ -35498,8 +35506,12 @@
 	  componentWillMount: function componentWillMount() {},
 	
 	  componentDidMount: function componentDidMount() {
-	    WineActions.listAll();
 	    WineStore.addChangeListener(this._onChange);
+	    WineActions.listAll();
+	  },
+	
+	  componentWillUnmount: function componentWillUnmount() {
+	    WineStore.removeChangeListener(this._onChange);
 	  },
 	
 	  _onChange: function _onChange() {
@@ -35510,30 +35522,7 @@
 	
 	  _createList: function _createList(wines) {
 	    var items = wines.map(function (wine) {
-	      return React.createElement(
-	        'tr',
-	        { key: wine.objectId },
-	        React.createElement(
-	          'td',
-	          null,
-	          wine.get('domain')
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          wine.get('year')
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          wine.get('type')
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          wine.get('number')
-	        )
-	      );
+	      return React.createElement(WineItem, { key: wine.objectId, wine: wine });
 	    });
 	    return items;
 	  },
@@ -35678,7 +35667,6 @@
 	    var payload = {
 	      action: action
 	    };
-	    console.log(action.actionType);
 	    this.dispatch(payload);
 	  }
 	
@@ -36416,6 +36404,59 @@
 	  return arg === void 0;
 	}
 
+
+/***/ },
+/* 293 */
+/*!********************************!*\
+  !*** ./app/views/wine-item.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by j.calabrese on 11/25/15.
+	 */
+	
+	'use strict';
+	
+	var React = __webpack_require__(/*! react */ 1);
+	var ReactDOM = __webpack_require__(/*! react-dom */ 158);
+	
+	var WineItem = React.createClass({
+	  displayName: 'WineItem',
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return { wine: {} };
+	  },
+	
+	  render: function render() {
+	    return React.createElement(
+	      'tr',
+	      null,
+	      React.createElement(
+	        'td',
+	        null,
+	        this.props.wine.get('domain')
+	      ),
+	      React.createElement(
+	        'td',
+	        null,
+	        this.props.wine.get('year')
+	      ),
+	      React.createElement(
+	        'td',
+	        null,
+	        this.props.wine.get('type')
+	      ),
+	      React.createElement(
+	        'td',
+	        null,
+	        this.props.wine.get('number')
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = WineItem;
 
 /***/ }
 /******/ ]);
