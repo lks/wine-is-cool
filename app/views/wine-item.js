@@ -14,7 +14,8 @@ var WineItem = React.createClass({
     return (
       <tr>
         <td>{this.props.wine.get('domain')}</td>
-        <td>{this.props.wine.get('year')}</td>
+				<td>{this.props.wine.get('variety')}</td>
+				<td>{this.props.wine.get('year')}</td>
         <td>{this.props.wine.get('type')}</td>
         <td>{this.props.wine.get('number')}</td>
       </tr>

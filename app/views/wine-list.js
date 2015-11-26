@@ -46,12 +46,21 @@ var WineList = React.createClass({
     var wines = this._createList(this.state.wines);
     return (
       <div>
-        <h1>Liste de vos vins</h1>
-        <table className="table">
+				<div className="row">
+					<div className="col-md-8">
+						<h1>Liste de vos vins</h1>
+					</div>
+					<div className="col-md-4">
+						<a href="#/new">Ajouter un vin</a>
+					</div>
+				</div>
+
+				<table className="table">
           <thead>
             <tr>
               <th>Domain</th>
-              <th>Year</th>
+							<th>Variety</th>
+							<th>Year</th>
               <th>Type</th>
               <th>Bottles</th>
             </tr>

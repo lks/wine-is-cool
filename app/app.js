@@ -14,21 +14,28 @@ const App = React.createClass({
   render: function() {
     return (
       <div>
-        <Link to="/new">New</Link>
-        <Link to="/list">List</Link>
-        <div>
-        {this.props.children}
-        </div>
-      </div>
+				<WineNew />
+				<div className="row">
+					<div className="col-md-4" />
+					<div className="col-md-4 text-center">
+						<hr />
+					OU
+						<hr />
+						<button type="submit" className="btn btn-default btn-lg col-md-12">
+							<Link to="/list">Accéder à ma cave</Link>
+						</button>
+					</div>
+					<div className="col-md-4" />
+				</div>
+			</div>
     )
   }
 });
 
 ReactDOM.render((
   <Router>
-    <Route path="/" component={App}>
-      <Route path="new" component={WineNew} />
-      <Route path="list" component={WineList} />
-    </Route>
+		<Route path="/" component={App} />
+		<Route path="new" component={WineNew} />
+		<Route path="list" component={WineList} />
   </Router>
 ), document.getElementById('app'));

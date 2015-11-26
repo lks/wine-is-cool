@@ -1,0 +1,16 @@
+.form-group .row {
+    padding-top: 1em;
+}
+
+.form-group button {
+    margin-top: 1em;
+}
+
+.form-group button a, .form-group button a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: #f7f6f6;
+}
